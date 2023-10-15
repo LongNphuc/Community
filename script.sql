@@ -260,6 +260,34 @@ LOCK TABLES `subject` WRITE;
 /*!40000 ALTER TABLE `subject` DISABLE KEYS */;
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `subjectissue`
+--
+
+DROP TABLE IF EXISTS `subjectissue`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `subjectissue` (
+  `subjectId` int DEFAULT NULL,
+  `userIdNote` int DEFAULT NULL,
+  `issueNote` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `status` int DEFAULT NULL,
+  KEY `subjectId` (`subjectId`),
+  KEY `userIdNote` (`userIdNote`),
+  CONSTRAINT `subjectissue_ibfk_1` FOREIGN KEY (`subjectId`) REFERENCES `subject` (`subjectId`),
+  CONSTRAINT `subjectissue_ibfk_2` FOREIGN KEY (`userIdNote`) REFERENCES `account` (`AccountId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `subjectissue`
+--
+
+LOCK TABLES `subjectissue` WRITE;
+/*!40000 ALTER TABLE `subjectissue` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subjectissue` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -270,4 +298,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-15 12:04:34
+-- Dump completed on 2023-10-15 23:37:59
